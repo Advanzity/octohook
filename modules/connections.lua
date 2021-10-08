@@ -10,7 +10,7 @@ function Connection.new(signal, func)
 	return self
 end
 
-function Connection:disconnect()
+function Connection:Disconnect()
 	if self.signal then
 		self.signal.connections[self.func] = nil
 		self.signal = nil
@@ -29,7 +29,7 @@ function Signal.new()
 	return self
 end
 
-function Signal:fire(...)
+function Signal:Fire(...)
 	local copy = {}
 	for func in pairs(self.connections) do
 		table.insert(copy, func)
@@ -40,12 +40,12 @@ function Signal:fire(...)
 	end
 end
 
-function Signal:connect(func)
+function Signal:Connect(func)
 	self.connections[func] = true
 	return Connection.new(self, func)
 end
 
-function Signal:wait()
+function Signal:Wait()
 	local thread = coroutine.running()
 	self.connections[thread] = true
 	local result = table.pack(coroutine.yield())
