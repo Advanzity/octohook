@@ -1,5 +1,3 @@
--- https://devforum.roblox.com/t/is-it-possible-to-make-a-custom-rbxscriptsignal-with-oop/124981/6
-
 local Connection = {}
 Connection.__index = Connection
 
